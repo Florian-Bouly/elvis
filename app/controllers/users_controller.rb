@@ -1778,30 +1778,6 @@ end
         DeviseMailer.confirmation_instructions(user_to_detach, user_to_detach.confirmation_token).deliver_later
       end
 
-      # if params[:from] == "family_link"
-      #   unless params[:addFamilyLink]
-      #     family_links = user_to_detach.family_links
-
-      #     links_to_deletes = family_links.select { |fl| fl.user_id == old_main_user.id || fl.member_id == old_main_user.id }
-
-      #     FamilyMemberUser.where(id: links_to_deletes.map(&:id)).delete_all
-      #   end
-      # else
-      #   if params[:addFamilyLink]
-      #     is_created = FamilyMemberUsers.addFamilyMemberWithConfirmation(
-      #       [ActiveSupport::HashWithIndifferentAccess.new(old_main_user.as_json.merge({link: params[:link], is_paying_for: params[:is_paying_for], is_legal_referent: params[:is_legal_referent]}))],
-      #       user_to_detach,
-      #       Season.current,
-      #       send_confirmation: true
-      #     )
-
-      #     unless is_created
-      #       render json: { message: "Le lien familial n'a pu être créé mais l'utilisateur à bien été détaché" }, status: :unprocessable_entity
-      #       return
-      #     end
-      #   end
-      # end
-
       render json: {message: "success"}, status: :ok
     else
       render json: {message: user_to_detach.errors.full_messages}, status: :unprocessable_entity

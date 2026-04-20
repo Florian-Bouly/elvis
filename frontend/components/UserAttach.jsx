@@ -36,7 +36,6 @@ class UserAttach extends React.Component {
 
         this.state = {
             attached_users: [],
-            //account_to_attach: undefined,
             data: [],
             pages: null,
             loading: false,
@@ -290,8 +289,8 @@ class UserAttach extends React.Component {
                 id: "actions",
                 Header: "Actions",
                 Cell: props => {
-                    let is_user = (props.original.id == this.props.user.id); //Si c'est l'utilisateur de la page actuelle
-                    let is_attached_to_user = this.state.attached_users.find(user => user.id == props.original.id); //Si c'est un utilisateur déjà rattaché à celui de la page actuelle
+                    let is_user = (props.original.id == this.props.user.id); // si c'est l'utilisateur de la page actuelle
+                    let is_attached_to_user = this.state.attached_users.find(user => user.id == props.original.id); // si c'est un utilisateur déjà rattaché à celui de la page actuelle
                     return (
                         <div className="btn-wrapper">
                             <div
