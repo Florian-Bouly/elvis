@@ -1761,9 +1761,9 @@ end
   end
 
   def detach_user
-    authorize! :manage, @current_user.is_admin
-
     user_to_detach = User.find(params[:id])
+
+    raise CanCan::AccessDenied unless current_user.admin? || current_user == user_to_detach.attached_to
 
     render json: {message: "user not found"}, status: :not_found and return if user_to_detach.nil?
 
@@ -1785,14 +1785,14 @@ end
   end
 
   def attach_view
-    authorize! :manage, @current_user.is_admin
     @current_user = current_user
+    authorize! :manage, @current_user.is_admin
     @user = User.find(params[:id])
     @referent_user = @user.attached_to #si compte rattaché, on trouve le compte principal
   end
 
   def get_attached_users
-    authorize! :manage, @current_user.is_admin
+    authorize! :manage, current_user.is_admin
     user_id = params[:id]
 
     attached_users = User.where(attached_to_id: user_id).select(:id, :first_name, :last_name, :email, :attached_to_id)
