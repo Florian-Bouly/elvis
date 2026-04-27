@@ -1562,7 +1562,7 @@ end
                                activity_type: ActivityRef.activity_types.except(:cham).keys.append(nil)
                              }
                            )
-                           .pluck('activity_applications.user_id', 'activities.id')
+                           .pluck('activity_application.user_id', 'activities.id') # activity_application au singulier car le where crée un alias avec le nom de la relation
                            .group_by(&:first)
 
     all_pre_app_activities = []
