@@ -119,7 +119,7 @@ gem "phonelib"
 gem "rchardet"
 gem "acsv-p"
 gem "liquid-rails", git:"https://github.com/Countable-us/liquid-rails", branch: 'master'
-gem "panoramic", github: "abstracts33d/panoramic"
+gem "panoramic", github: "ELVIS-SOFTWARE/panoramic"
 gem "whenever"
 
 PluginGemUtils.get_plugins_to_install(include_libraries: true).each do |plugin|
