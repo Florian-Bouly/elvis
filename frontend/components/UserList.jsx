@@ -505,13 +505,6 @@ class UserList extends React.Component {
                         Fusionner des doublons
                     </a>
 
-                    <button className="btn btn-primary m-r" href="/users/new"
-                            onClick={() => this.setState({showAttachAccountModal: true})}>
-                        <i className="fas fa-bezier-curve"></i>&nbsp;
-                        Rattacher des utilisateurs
-                    </button>
-
-
                     <button
                         data-tippy-content="Envoyer le mail de confirmation"
                         className="btn btn-warning m-r" onClick={this.sendConfirmationMail}>
